@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keval's dApp</title>
+    <link rel="icon" type="image/svg" href="metamask-fox.svg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.2-rc.0/web3.min.js" integrity="sha512-REWiGZVmhU2S5eIov/DuNrsq4djWnPaAHSvXrbLLLaI0r/gW+wh1utIzxt0iB4IQLgXhNDj5mR0YMBjrkKhVMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+
+  <body>
+    <main class="container-fluid">
+      <header>
+        <div id="logo-container">
+
+          <h1 id="logo-text" class="text-center" style="color: white;font-family: Georgia, 'Times New Roman', Times, serif;">
+            <strong>MetaMask dApp</strong>
+          </h1>
+
+          <div class="row justify-content-center">
+              <img id="mm-logo" src="metamask-fox.svg" />
+          </div>
+
+        </div>
+      </header>
+      <section>
+        
+        <div class="row justify-content-center mb-3">
+          <div class="col-xl-4 ">
+            <button class="btn btn-success btn-lg btn-block mb-3" id="btn3">MetaMask is installed!</button>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-xl-4 ">
+            <button class="btn btn-danger btn-lg btn-block mb-3" id="btn10" hidden>MetaMask ain't installed, Click here to install it!</button>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+            <p class="alert alert-danger" id="disconnected" style="color: black;" hidden>
+              <strong>Status: Disconnected, Please connect to MetaMask to access it's functionalities!</strong>
+            </p>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <p class="alert alert-success" id="connected" style="color: black;" hidden>
+            <strong>Status: Connected!</strong>
+          </p>
+      </div>  
+
+        <div class="row">
+          <div class="col-xl-4">
+            <p class="info-text alert alert-primary" id="networkname">
+              Current Network: 
+            </p>
+          </div>
+
+          <div class="col-xl-4">
+            <p class="info-text alert alert-secondary" id="chainId">
+              Current Network's ChainId: 
+            </p>
+          </div>
+
+          <div class="col-xl-4">
+            <p class="info-text alert alert-success" id="useraccountaddress" style="font-size: medium;">
+              Current Account Address: 
+            </p>
+          </div>
+          
+        </div>
+      </section>
+
+      <section>
+        <div class="row">
+
+          <div class="col-xl-4">
+            <div class="card full-width">
+              <div class="card-body"style="text-align: center;" id="balancediv">
+
+                <h4>
+                  <strong>Balance</strong>
+                </h4>
+
+                <button class="btn-info btn-lg btn-block mb-3" id="btn7">Check MetaMask Balance</button>
+
+                <p class="info-text alert alert-warning" id="ethSignResult" style="font-size: small;" hidden>MetaMask Balance:</p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4">
+            <div class="card">
+              <div class="card-body" id="connectivitydiv1">
+
+                <h4 class="card-title" style="text-align: center;" id="connectivitydiv">
+                  <strong>Connectivity</strong>
+                </h4>
+
+                <button class="btn-success btn-lg btn-block mb-3" id="btn4" disabled id="connectbutton">Connect</button>
+
+                <p class="info-text alert alert-warning" id="connectivity" style="font-size: small;" hidden></p>
+
+                <h4 class="card-title" style="text-align: center;" id="transactiondiv">
+                  <strong>Transaction Count</strong>
+                </h4>
+
+                <button class="btn-info btn-lg btn-block mb-3" id="btn6">Transaction Count</button>
+
+                <p class="info-text alert alert-warning" id="getAccountsResult" style="font-size: small;" hidden></p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4">
+            <div class="card">
+              <div class="card-body" id="switchnetworksdiv">
+
+                <h4 class="card-title" style="text-align: center;">
+                  <strong>Switch Networks</strong>
+                </h4>
+
+                <div class="form-group">
+                  <label>Network Names</label>
+                  <select class="custom-select" id="network">
+                    <option selected>Select a Network</option>
+                    <option value="1">1 - Ethereum Main Network (Mainnet)</option>
+                    <option value="3">3 - Ropsten Test Network</option>
+                    <option value="4">4 - Rinkeby Test Network</option>
+                    <option value="5">5 - Goerli Test Network</option>
+                    <option value="42">42 - Kovan Test Network</option>
+                    <option value="97">97 - Binance Smart Chain Testnet</option>
+                  </select>
+                </div>
+
+                <button class="btn-info btn-lg btn-block mb-3" id="btn1">Switch To Selected Network</button>  
+
+                <div class="error-message justify-content-center col-xl-12" id="samenetwork" hidden>
+                  <div>You're on the same network!</div>
+                </div>
+
+              </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+          <div class="row justify-content-center" id="sendethform">
+            <div class="col-xl-4">
+              <div class="card">
+                <div class="card-body">
+
+                  <h4 class="card-title" style="text-align: center;">
+                    <strong>Send Ether</strong>
+                  </h4>
+
+                  <div class="form-group">
+                    <label>Receiver's Public Address</label>
+                    <input class="form-control" type="text" id="receiveraddress"/>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Amount of ETH to transfer</label>
+                    <input class="form-control" type="number" id="amount"/>
+                  </div>
+
+                  <div class=" form-group alert alert-danger" id="insufficient" hidden>
+                    <strong>Insufficient Funds!</strong> Please try again!
+                    <button class="close" id="btn8">&times
+                  </div>
+
+                  <div class="form-group error-message justify-content-center col-xl-12" id="nullvalues" hidden>
+                    <div class="error-message-text">You haven't entered anything!</div>
+                  </div>
+
+                  <div class="form-group">
+                    <p class="alert alert-warning" id="txnhash" style="font-size: small;" hidden>
+                      Your Transaction Hash:
+                    </p>
+                  </div>
+
+                  <button type="button" class="col-xl-7 btn-dark btn-lg" id="btn2">Send ETH</button> 
+
+                  <button type="button" class="col-xl-4 btn-dark btn-lg" id="btn9">Clear</button> 
+
+                  </div>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+    </main>
+    <script src="metamask.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+section {
+  margin: 10px;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1639322537231-2f206e06af84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGJsb2NrY2hhaW58ZW58MHx8MHx8&w=1000&q=80');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
+.info-text {
+  font-size: 1.1em;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.card {
+  margin-bottom: 0px 0px 20px 0px;
+}
+
+/* Logo & Header */
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo-container {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+#logo-text {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+#mm-logo {
+  width: 60%;
+}
+
+.error-message {
+  min-height: 32px;
+  border: 1px solid black;
+  color: #24292e;
+  background: rgb(239, 232, 232);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+}
